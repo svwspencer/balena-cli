@@ -122,7 +122,9 @@ export default class TunnelCmd extends Command {
 		}
 
 		// Ascertain device uuid
-		const { getOnlineTargetDeviceUuid } = await import('../../utils/patterns');
+		const { getOnlineTargetDeviceUuid } = await import(
+			'../../utils/patterns.js'
+		);
 		const uuid = await getOnlineTargetDeviceUuid(sdk, params.deviceOrFleet);
 		logger.logInfo(`Opening a tunnel to ${uuid}...`);
 
@@ -134,7 +136,7 @@ export default class TunnelCmd extends Command {
 			.map(async ({ localPort, localAddress, remotePort }) => {
 				try {
 					const { tunnelConnectionToDevice } = await import(
-						'../../utils/tunnel'
+						'../../utils/tunnel.js'
 					);
 					const handler = await tunnelConnectionToDevice(uuid, remotePort, sdk);
 

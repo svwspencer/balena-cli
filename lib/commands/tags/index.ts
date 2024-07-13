@@ -71,7 +71,7 @@ export default class TagsCmd extends Command {
 		let tags;
 
 		if (options.fleet) {
-			const { getFleetSlug } = await import('../../utils/sdk');
+			const { getFleetSlug } = await import('../../utils/sdk.js');
 			tags = await balena.models.application.tags.getAllByApplication(
 				await getFleetSlug(balena, options.fleet),
 			);
@@ -81,7 +81,7 @@ export default class TagsCmd extends Command {
 		}
 		if (options.release) {
 			const { disambiguateReleaseParam } = await import(
-				'../../utils/normalization'
+				'../../utils/normalization.js'
 			);
 			const releaseParam = await disambiguateReleaseParam(
 				balena,

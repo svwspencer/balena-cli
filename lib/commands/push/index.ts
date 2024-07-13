@@ -233,7 +233,9 @@ export default class PushCmd extends Command {
 		logger.logDebug(`Using build source directory: ${options.source} `);
 
 		const sdk = getBalenaSdk();
-		const { validateProjectDirectory } = await import('../../utils/compose_ts');
+		const { validateProjectDirectory } = await import(
+			'../../utils/compose_ts.js'
+		);
 		const { dockerfilePath, registrySecrets } = await validateProjectDirectory(
 			sdk,
 			{
@@ -276,8 +278,8 @@ export default class PushCmd extends Command {
 		dockerfilePath: string,
 		registrySecrets: RegistrySecrets,
 	) {
-		const remote = await import('../../utils/remote-build');
-		const { getApplication } = await import('../../utils/sdk');
+		const remote = await import('../../utils/remote-build.js');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		// Check for invalid options
 		const localOnlyOptions: Array<keyof FlagsDef> = [
@@ -356,7 +358,7 @@ export default class PushCmd extends Command {
 			'is only valid when pushing to a fleet',
 		);
 
-		const deviceDeploy = await import('../../utils/device/deploy');
+		const deviceDeploy = await import('../../utils/device/deploy.js');
 
 		try {
 			await deviceDeploy.deployToDevice({
@@ -376,7 +378,7 @@ export default class PushCmd extends Command {
 				convertEol: !options['noconvert-eol'],
 			});
 		} catch (e) {
-			const { BuildError } = await import('../../utils/device/errors');
+			const { BuildError } = await import('../../utils/device/errors.js');
 			if (instanceOf(e, BuildError)) {
 				throw new ExpectedError(e.toString());
 			} else {
@@ -387,7 +389,7 @@ export default class PushCmd extends Command {
 
 	protected async getBuildTarget(appOrDevice: string): Promise<BuildTarget> {
 		const { validateLocalHostnameOrIp } = await import(
-			'../../utils/validation'
+			'../../utils/validation.js'
 		);
 
 		return validateLocalHostnameOrIp(appOrDevice)

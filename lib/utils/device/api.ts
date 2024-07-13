@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 import * as _ from 'lodash';
-import * as request from 'request';
+import request from 'request';
 import type * as Stream from 'stream';
 
 import { retry } from '../helpers';

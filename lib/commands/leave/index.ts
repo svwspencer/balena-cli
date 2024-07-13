@@ -62,7 +62,7 @@ export default class LeaveCmd extends Command {
 	public async run() {
 		const { args: params } = await this.parse(LeaveCmd);
 
-		const promote = await import('../../utils/promote');
+		const promote = await import('../../utils/promote.js');
 		const logger = await Command.getLogger();
 		return promote.leave(logger, params.deviceIpOrHostname);
 	}

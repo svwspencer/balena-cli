@@ -78,8 +78,8 @@ export default class DeviceStopServiceCmd extends Command {
 		deviceUuid: string,
 		serviceNames: string[],
 	) {
-		const { ExpectedError } = await import('../../errors');
-		const { getExpandedProp } = await import('../../utils/pine');
+		const { ExpectedError } = await import('../../errors.js');
+		const { getExpandedProp } = await import('../../utils/pine.js');
 
 		// Get device
 		const device = await balena.models.device.getWithServiceDetails(

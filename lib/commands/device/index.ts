@@ -122,7 +122,7 @@ export default class DeviceCmd extends Command {
 		)) as ExtendedDevice;
 
 		if (options.view) {
-			const open = await import('open');
+			const { default: open } = await import('open');
 			const dashboardUrl = balena.models.device.getDashboardUrl(device.uuid);
 			await open(dashboardUrl, { wait: false });
 			return;

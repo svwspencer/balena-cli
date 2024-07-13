@@ -82,7 +82,7 @@ export default class OsBuildConfigCmd extends Command {
 	async buildConfig(image: string, deviceTypeSlug: string, advanced: boolean) {
 		advanced = advanced || false;
 
-		const { getManifest } = await import('../../utils/helpers');
+		const { getManifest } = await import('../../utils/helpers.js');
 
 		const deviceTypeManifest = await getManifest(image, deviceTypeSlug);
 		return this.buildConfigForDeviceType(deviceTypeManifest, advanced);
@@ -103,7 +103,7 @@ export default class OsBuildConfigCmd extends Command {
 			});
 
 			if (advancedGroup != null) {
-				const { getGroupDefaults } = await import('../../utils/helpers');
+				const { getGroupDefaults } = await import('../../utils/helpers.js');
 				override = getGroupDefaults(advancedGroup);
 			}
 		}

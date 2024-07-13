@@ -52,7 +52,7 @@ export default class KeyRmCmd extends Command {
 	public async run() {
 		const { args: params, flags: options } = await this.parse(KeyRmCmd);
 
-		const patterns = await import('../../utils/patterns');
+		const patterns = await import('../../utils/patterns.js');
 
 		await patterns.confirm(
 			options.yes ?? false,

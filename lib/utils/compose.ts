@@ -479,10 +479,8 @@ export class BuildProgressUI implements Renderer {
 	}
 
 	_renderStatus(end = false) {
-		const moment = require('moment') as typeof import('moment');
-		(
-			require('moment-duration-format') as typeof import('moment-duration-format')
-		)(moment);
+		const moment = require('moment');
+		require('moment-duration-format')(moment);
 
 		this._tty.clearLine();
 		this._tty.write(this._prefix);
@@ -577,10 +575,8 @@ export class BuildProgressInline implements Renderer {
 	}
 
 	end(summary?: Dictionary<string>) {
-		const moment = require('moment') as typeof import('moment');
-		(
-			require('moment-duration-format') as typeof import('moment-duration-format')
-		)(moment);
+		const moment = require('moment');
+		require('moment-duration-format')(moment);
 
 		if (this._ended) {
 			return;

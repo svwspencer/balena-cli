@@ -161,13 +161,13 @@ export async function validateDevOptionAndWarn(
 		return;
 	}
 	if (version && /\bprod\b/.test(version)) {
-		const { ExpectedError } = await import('../errors');
+		const { ExpectedError } = await import('../errors.js');
 		throw new ExpectedError(
 			`Error: The '--dev' option conflicts with production balenaOS version '${version}'`,
 		);
 	}
 	if (!logger) {
-		const Logger = await import('./logger');
+		const { default: Logger } = await import('./logger.js');
 		logger = Logger.getLogger();
 	}
 	logger.logInfo(stripIndent`
@@ -192,7 +192,7 @@ export async function validateSecureBootOptionAndWarn(
 	if (!secureBoot) {
 		return;
 	}
-	const { ExpectedError } = await import('../errors');
+	const { ExpectedError } = await import('../errors.js');
 	if (!version) {
 		throw new ExpectedError(`Error: No version provided`);
 	}
@@ -215,7 +215,7 @@ export async function validateSecureBootOptionAndWarn(
 		})
 	) {
 		if (!logger) {
-			const Logger = await import('./logger');
+			const { default: Logger } = await import('./logger.js');
 			logger = Logger.getLogger();
 		}
 		logger.logInfo(stripIndent`

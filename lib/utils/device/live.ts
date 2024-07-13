@@ -108,8 +108,8 @@ export class LivepushManager {
 		this.logger.logLivepush('Device state settled');
 
 		// Prepare dockerignore data for file watcher
-		const { getDockerignoreByService } = await import('../ignore');
-		const { getServiceDirsFromComposition } = await import('../compose_ts');
+		const { getDockerignoreByService } = await import('../ignore.js');
+		const { getServiceDirsFromComposition } = await import('../compose_ts.js');
 		const rootContext = path.resolve(this.buildContext);
 		const serviceDirsByService = await getServiceDirsFromComposition(
 			this.deployOpts.source,

@@ -71,7 +71,7 @@ export default class EnvRmCmd extends Command {
 
 		await Command.checkLoggedIn();
 
-		const { confirm } = await import('../../utils/patterns');
+		const { confirm } = await import('../../utils/patterns.js');
 		await confirm(
 			opt.yes || false,
 			'Are you sure you want to delete the environment variable?',

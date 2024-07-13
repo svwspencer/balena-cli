@@ -28,8 +28,9 @@ import { instanceOf, NotLoggedInError, ExpectedError } from '../errors';
 import { getBalenaSdk, getVisuals, stripIndent, getCliForm } from './lazy';
 import validation = require('./validation');
 import { delay } from './helpers';
+import type Bluebird from 'bluebird';
 
-export function authenticate(options: object): Promise<void> {
+export function authenticate(options: object): Bluebird<void> {
 	const balena = getBalenaSdk();
 	return getCliForm()
 		.run(
@@ -229,7 +230,7 @@ export async function selectOrganization(
 }
 
 export async function getAndSelectOrganization() {
-	const { getOwnOrganizations } = await import('./sdk');
+	const { getOwnOrganizations } = await import('./sdk.js');
 	const organizations = await getOwnOrganizations(getBalenaSdk(), {
 		$select: ['name', 'handle'],
 	});
@@ -304,7 +305,8 @@ export async function getOnlineTargetDeviceUuid(
 	sdk: BalenaSDK,
 	fleetOrDevice: string,
 ) {
-	const logger = (await import('../utils/logger')).getLogger();
+	const { default: Logger } = await import('../utils/logger.js');
+	const logger = Logger.getLogger();
 
 	// If looks like UUID, probably device
 	if (validation.validateUuid(fleetOrDevice)) {
@@ -337,7 +339,7 @@ export async function getOnlineTargetDeviceUuid(
 	const application = await (async () => {
 		try {
 			logger.logDebug(`Fetching fleet ${fleetOrDevice}`);
-			const { getApplication } = await import('./sdk');
+			const { getApplication } = await import('./sdk.js');
 			return await getApplication(sdk, fleetOrDevice, {
 				$select: ['id', 'slug'],
 				$expand: {
@@ -382,7 +384,7 @@ export async function getOnlineTargetDeviceUuid(
 export function selectFromList<T>(
 	message: string,
 	choices: Array<T & { name: string }>,
-): Promise<T> {
+): Bluebird<T> {
 	return getCliForm().ask<T>({
 		message,
 		type: 'list',

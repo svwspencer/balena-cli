@@ -77,7 +77,7 @@ export default class FleetCreateCmd extends Command {
 		const { args: params, flags: options } = await this.parse(FleetCreateCmd);
 
 		await (
-			await import('../../utils/application-create')
+			await import('../../utils/application-create.js')
 		).applicationCreateBase('fleet', options, params);
 	}
 }

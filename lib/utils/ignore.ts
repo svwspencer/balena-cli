@@ -104,7 +104,7 @@ export async function getDockerIgnoreInstance(
 ): Promise<Ignore> {
 	const dockerIgnoreStr = await readDockerIgnoreFile(directory);
 	const $dockerIgnore = (await import('@balena/dockerignore')).default;
-	const ig = $dockerIgnore({ ignorecase: false });
+	const ig = $dockerIgnore.default({ ignorecase: false });
 
 	ig.add(['**/.git']);
 	if (dockerIgnoreStr) {

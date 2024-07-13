@@ -46,7 +46,7 @@ export default class ApiKeysCmd extends Command {
 	public async run() {
 		const { flags: options } = await this.parse(ApiKeysCmd);
 
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 		const actorId = options.fleet
 			? (
 					await getApplication(getBalenaSdk(), options.fleet, {

@@ -206,7 +206,7 @@ async function resolveOSVersion(
 			false,
 		);
 	}
-	const { normalizeOsVersion } = await import('./normalization');
+	const { normalizeOsVersion } = await import('./normalization.js');
 	version = normalizeOsVersion(version);
 	return version;
 }

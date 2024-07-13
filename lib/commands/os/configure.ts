@@ -170,10 +170,10 @@ export default class OsConfigureCmd extends Command {
 		const devInit = await import('balena-device-init');
 		const { promises: fs } = await import('fs');
 		const { generateDeviceConfig, generateApplicationConfig } = await import(
-			'../../utils/config'
+			'../../utils/config.js'
 		);
-		const helpers = await import('../../utils/helpers');
-		const { getApplication } = await import('../../utils/sdk');
+		const helpers = await import('../../utils/helpers.js');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		let app: ApplicationWithDeviceTypeSlug | undefined;
 		let device;
@@ -211,7 +211,7 @@ export default class OsConfigureCmd extends Command {
 			configJson = JSON.parse(rawConfig);
 		}
 
-		const { normalizeOsVersion } = await import('../../utils/normalization');
+		const { normalizeOsVersion } = await import('../../utils/normalization.js');
 		const osVersion = normalizeOsVersion(
 			options.version ||
 				(await getOsVersionFromImage(
@@ -221,11 +221,11 @@ export default class OsConfigureCmd extends Command {
 				)),
 		);
 
-		const { validateDevOptionAndWarn } = await import('../../utils/config');
+		const { validateDevOptionAndWarn } = await import('../../utils/config.js');
 		await validateDevOptionAndWarn(options.dev, osVersion);
 
 		const { validateSecureBootOptionAndWarn } = await import(
-			'../../utils/config'
+			'../../utils/config.js'
 		);
 		await validateSecureBootOptionAndWarn(
 			options.secureBoot,
@@ -363,7 +363,7 @@ async function checkDeviceTypeCompatibility(
 	},
 ) {
 	if (options['device-type']) {
-		const helpers = await import('../../utils/helpers');
+		const helpers = await import('../../utils/helpers.js');
 		if (
 			!(await helpers.areDeviceTypesCompatible(
 				app.is_for__device_type[0].slug,
@@ -417,7 +417,7 @@ async function askQuestionsForDeviceType(
 			isGroup: true,
 		});
 		if (!_.isEmpty(advancedGroup)) {
-			const helpers = await import('../../utils/helpers');
+			const helpers = await import('../../utils/helpers.js');
 			answerSources.push(helpers.getGroupDefaults(advancedGroup));
 		}
 	}

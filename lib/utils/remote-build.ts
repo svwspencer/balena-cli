@@ -126,7 +126,7 @@ export async function startRemoteBuild(
 		}
 	};
 
-	const { addSIGINTHandler } = await import('./helpers');
+	const { addSIGINTHandler } = await import('./helpers.js');
 	addSIGINTHandler(sigintHandler);
 
 	try {

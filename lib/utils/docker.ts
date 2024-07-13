@@ -186,7 +186,7 @@ export async function getDocker(
 export async function createClient(
 	opts: dockerode.DockerOptions,
 ): Promise<dockerode> {
-	const Docker = await import('dockerode');
+	const { default: Docker } = await import('dockerode');
 	return new Docker(opts);
 }
 

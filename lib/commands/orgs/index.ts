@@ -38,7 +38,7 @@ export default class OrgsCmd extends Command {
 	public async run() {
 		await this.parse(OrgsCmd);
 
-		const { getOwnOrganizations } = await import('../../utils/sdk');
+		const { getOwnOrganizations } = await import('../../utils/sdk.js');
 
 		// Get organizations
 		const organizations = await getOwnOrganizations(getBalenaSdk(), {

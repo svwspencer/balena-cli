@@ -64,7 +64,7 @@ export default class DeviceRegisterCmd extends Command {
 		const { args: params, flags: options } =
 			await this.parse(DeviceRegisterCmd);
 
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		const balena = getBalenaSdk();
 

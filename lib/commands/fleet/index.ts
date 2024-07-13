@@ -58,7 +58,7 @@ export default class FleetCmd extends Command {
 	public async run() {
 		const { args: params, flags: options } = await this.parse(FleetCmd);
 
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		const balena = getBalenaSdk();
 
@@ -70,7 +70,7 @@ export default class FleetCmd extends Command {
 		});
 
 		if (options.view) {
-			const open = await import('open');
+			const { default: open } = await import('open');
 			const dashboardUrl = balena.models.application.getDashboardUrl(
 				application.id,
 			);

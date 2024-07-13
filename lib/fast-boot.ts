@@ -74,7 +74,7 @@ async function $start() {
 		stat(path.join(root, 'npm-shrinkwrap.json'), { bigint: true }),
 	]);
 	// Include timestamps to account for dev-time changes to node_modules
-	const cacheKiller = `${pJson.version}-${pStat.mtimeMs}-${nStat.mtimeMs}`;
+	const cacheKiller = `${pJson.default.version}-${pStat.mtimeMs}-${nStat.mtimeMs}`;
 	require('fast-boot2').start({
 		cacheFile,
 		cacheKiller,

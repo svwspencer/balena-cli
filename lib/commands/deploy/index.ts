@@ -175,7 +175,7 @@ ${dockerignoreHelp}
 
 		const sdk = getBalenaSdk();
 		const { getRegistrySecrets, validateProjectDirectory } = await import(
-			'../../utils/compose_ts'
+			'../../utils/compose_ts.js'
 		);
 
 		const { releaseTagKeys, releaseTagValues } = parseReleaseTagKeysAndValues(
@@ -199,10 +199,10 @@ ${dockerignoreHelp}
 			(options as FlagsDef)['registry-secrets'] = registrySecrets;
 		}
 
-		const helpers = await import('../../utils/helpers');
+		const helpers = await import('../../utils/helpers.js');
 		const app = await helpers.getAppWithArch(fleet);
 
-		const dockerUtils = await import('../../utils/docker');
+		const dockerUtils = await import('../../utils/docker.js');
 		const [docker, buildOpts, composeOpts] = await Promise.all([
 			dockerUtils.getDocker(options),
 			dockerUtils.generateBuildOpts(options as FlagsDef),
@@ -250,7 +250,7 @@ ${dockerignoreHelp}
 		const doodles = await import('resin-doodles');
 		const sdk = getBalenaSdk();
 		const { deployProject: $deployProject, loadProject } = await import(
-			'../../utils/compose_ts'
+			'../../utils/compose_ts.js'
 		);
 
 		const appType = opts.app.application_type[0];

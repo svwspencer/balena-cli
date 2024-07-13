@@ -95,7 +95,7 @@ export default class OsDownloadCmd extends Command {
 					await OsDownloadCmd.checkLoggedIn();
 				} catch (e) {
 					const { ExpectedError, NotLoggedInError } = await import(
-						'../../errors'
+						'../../errors.js'
 					);
 					if (e instanceof NotLoggedInError) {
 						throw new ExpectedError(stripIndent`
@@ -107,7 +107,7 @@ export default class OsDownloadCmd extends Command {
 			}
 		}
 
-		const { downloadOSImage } = await import('../../utils/cloud');
+		const { downloadOSImage } = await import('../../utils/cloud.js');
 
 		try {
 			await downloadOSImage(params.type, options.output, options.version);

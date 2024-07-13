@@ -185,7 +185,7 @@ async function resolveFleetSlugs(
 	fleetOption: string,
 ) {
 	const fleetSlugs: string[] = [];
-	const { getFleetSlug } = await import('../../utils/sdk');
+	const { getFleetSlug } = await import('../../utils/sdk.js');
 	for (const appNameOrSlug of fleetOption.split(',')) {
 		try {
 			fleetSlugs.push(await getFleetSlug(balena, appNameOrSlug));
@@ -222,7 +222,7 @@ async function setServiceVars(
 			}
 		}
 	} else if (options.device) {
-		const { getDeviceAndAppFromUUID } = await import('../../utils/cloud');
+		const { getDeviceAndAppFromUUID } = await import('../../utils/cloud.js');
 		for (const uuid of options.device.split(',')) {
 			let device;
 			let app;

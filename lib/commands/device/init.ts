@@ -113,12 +113,12 @@ export default class DeviceInitCmd extends Command {
 
 		// Imports
 		const { promisify } = await import('util');
-		const rimraf = promisify(await import('rimraf'));
+		const rimraf = promisify((await import('rimraf')).default);
 		const tmp = await import('tmp');
 		const tmpNameAsync = promisify(tmp.tmpName);
 		tmp.setGracefulCleanup();
-		const { downloadOSImage } = await import('../../utils/cloud');
-		const { getApplication } = await import('../../utils/sdk');
+		const { downloadOSImage } = await import('../../utils/cloud.js');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		const logger = await Command.getLogger();
 		const balena = getBalenaSdk();
@@ -133,7 +133,7 @@ export default class DeviceInitCmd extends Command {
 						},
 					},
 				})
-			: await (await import('../../utils/patterns')).selectApplication();
+			: await (await import('../../utils/patterns.js')).selectApplication();
 
 		// Register new device
 		const deviceUuid = balena.models.device.generateUniqueKey();

@@ -21,7 +21,7 @@ export async function discoverLocalBalenaOsDevices(
 ): Promise<LocalBalenaOsDevice[]> {
 	const services = await new Promise<Service[]>((resolve) => {
 		const bonjour = new Bonjour({}, async (err: string | Error) => {
-			await (await import('../errors')).handleError(err);
+			await (await import('../errors.js')).handleError(err);
 		});
 		const resinSshServices: Service[] = [];
 		const browser = bonjour.find(avahiBalenaSshConfig, (service) =>

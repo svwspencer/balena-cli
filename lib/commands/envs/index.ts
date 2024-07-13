@@ -125,14 +125,14 @@ export default class EnvsCmd extends Command {
 
 		let fleetSlug: string | undefined = options.fleet
 			? await (
-					await import('../../utils/sdk')
+					await import('../../utils/sdk.js')
 				).getFleetSlug(balena, options.fleet)
 			: undefined;
 		let fullUUID: string | undefined; // as oppposed to the short, 7-char UUID
 
 		if (options.device) {
 			const { getDeviceAndMaybeAppFromUUID } = await import(
-				'../../utils/cloud'
+				'../../utils/cloud.js'
 			);
 			const [device, app] = await getDeviceAndMaybeAppFromUUID(
 				balena,
@@ -186,7 +186,7 @@ export default class EnvsCmd extends Command {
 		}
 
 		if (options.json) {
-			const { pickAndRename } = await import('../../utils/helpers');
+			const { pickAndRename } = await import('../../utils/helpers.js');
 			const mapped = varArray.map((o) => pickAndRename(o, fields));
 			this.log(JSON.stringify(mapped, null, 4));
 		} else {

@@ -55,7 +55,7 @@ export default class DeviceDeactivateCmd extends Command {
 			await this.parse(DeviceDeactivateCmd);
 
 		const balena = getBalenaSdk();
-		const patterns = await import('../../utils/patterns');
+		const patterns = await import('../../utils/patterns.js');
 
 		const uuid = params.uuid;
 		const deactivationWarning = `

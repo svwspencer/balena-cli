@@ -62,7 +62,7 @@ async function displayDeviceLogs(
 	system: boolean,
 	filterServices?: string[],
 ): Promise<void> {
-	const { addSIGINTHandler } = await import('../helpers');
+	const { addSIGINTHandler } = await import('../helpers.js');
 	const { parse: ndjsonParse } = await import('ndjson');
 	let gotSignal = false;
 	const handleSignal = () => {
@@ -125,7 +125,7 @@ export async function connectAndDisplayDeviceLogs({
 		return displayDeviceLogs(logStream, logger, system, filterServices);
 	}
 
-	const { retry } = await import('../../utils/helpers');
+	const { retry } = await import('../../utils/helpers.js');
 	try {
 		await retry({
 			func: connectAndDisplay,

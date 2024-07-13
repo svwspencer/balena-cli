@@ -56,7 +56,7 @@ export default class ConfigInjectCmd extends Command {
 	public async run() {
 		const { args: params, flags: options } = await this.parse(ConfigInjectCmd);
 
-		const { safeUmount } = await import('../../utils/umount');
+		const { safeUmount } = await import('../../utils/umount.js');
 
 		const drive =
 			options.drive || (await getVisuals().drive('Select the device/OS drive'));

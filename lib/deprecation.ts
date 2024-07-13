@@ -102,7 +102,7 @@ export class DeprecationChecker {
 	protected async fetchPublishedTimestampForVersion(
 		version: string,
 	): Promise<string | undefined> {
-		const { default: got } = await import('got');
+		const { default: got } = (await import('got')).default;
 		const url = this.getNpmUrl(version);
 		let response: import('got').Response<Dictionary<any>> | undefined;
 		try {
@@ -198,7 +198,7 @@ or release date not available`);
 		const nextMajorDate = new Date(nextMajorDateStr).getTime();
 		const daysElapsed = Math.trunc((this.now - nextMajorDate) / this.msInDay);
 		if (daysElapsed > this.expiryDays) {
-			const { ExpectedError } = await import('./errors');
+			const { ExpectedError } = await import('./errors.js');
 			throw new ExpectedError(this.getExpiryMsg(daysElapsed));
 		} else if (daysElapsed > this.deprecationDays && process.stderr.isTTY) {
 			console.error(this.getDeprecationMsg(daysElapsed));

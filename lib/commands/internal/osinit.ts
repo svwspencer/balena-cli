@@ -63,7 +63,7 @@ export default class OsinitCmd extends Command {
 		const config = JSON.parse(params.config);
 
 		const { getManifest, osProgressHandler } = await import(
-			'../../utils/helpers'
+			'../../utils/helpers.js'
 		);
 		const manifest = await getManifest(params.image, params.type);
 

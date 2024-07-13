@@ -16,7 +16,7 @@
  */
 
 import * as semver from 'balena-semver';
-import * as Docker from 'dockerode';
+import Docker from 'dockerode';
 import * as _ from 'lodash';
 import type { Composition } from '@balena/compose/dist/parse';
 import type {
@@ -215,7 +215,7 @@ export async function deployToDevice(opts: DeviceDeployOptions): Promise<void> {
 		imageIds = {};
 	}
 
-	const { awaitInterruptibleTask } = await import('../helpers');
+	const { awaitInterruptibleTask } = await import('../helpers.js');
 	const buildTasks = await awaitInterruptibleTask<typeof performBuilds>(
 		performBuilds,
 		project.composition,
@@ -295,7 +295,7 @@ async function streamDeviceLogs(
 		return;
 	}
 	globalLogger.logInfo('Streaming device logs...');
-	const { connectAndDisplayDeviceLogs } = await import('./logs');
+	const { connectAndDisplayDeviceLogs } = await import('./logs.js');
 	return connectAndDisplayDeviceLogs({
 		deviceApi,
 		logger: globalLogger,

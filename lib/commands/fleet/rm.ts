@@ -54,8 +54,8 @@ export default class FleetRmCmd extends Command {
 	public async run() {
 		const { args: params, flags: options } = await this.parse(FleetRmCmd);
 
-		const { confirm } = await import('../../utils/patterns');
-		const { getApplication } = await import('../../utils/sdk');
+		const { confirm } = await import('../../utils/patterns.js');
+		const { getApplication } = await import('../../utils/sdk.js');
 		const balena = getBalenaSdk();
 
 		// Confirm

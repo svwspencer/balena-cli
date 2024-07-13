@@ -43,8 +43,8 @@ export async function executeWithPrivileges(
 	isCLIcmd = true,
 ): Promise<void> {
 	// whether the CLI is already running with admin / super user privileges
-	const isElevated = await (await import('is-elevated'))();
-	const { shellEscape } = await import('./helpers');
+	const isElevated = await (await import('is-elevated')).default();
+	const { shellEscape } = await import('./helpers.js');
 	const opts: SpawnOptions = {
 		env: process.env,
 		stdio: ['inherit', 'inherit', stderr ? 'pipe' : 'inherit'],

@@ -50,7 +50,7 @@ export default class FleetRestartCmd extends Command {
 	public async run() {
 		const { args: params } = await this.parse(FleetRestartCmd);
 
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		const balena = getBalenaSdk();
 

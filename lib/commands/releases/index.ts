@@ -67,7 +67,7 @@ export default class ReleasesCmd extends Command {
 		];
 
 		const balena = getBalenaSdk();
-		const { getFleetSlug } = await import('../../utils/sdk');
+		const { getFleetSlug } = await import('../../utils/sdk.js');
 
 		const releases = await balena.models.release.getAllByApplication(
 			await getFleetSlug(balena, params.fleet),

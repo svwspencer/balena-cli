@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 import { Help } from '@oclif/core';
-import * as indent from 'indent-string';
+import indent from 'indent-string';
 import { getChalk } from './utils/lazy';
 
 // Partially overrides standard implementation of help plugin

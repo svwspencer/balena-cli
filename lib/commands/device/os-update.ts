@@ -122,7 +122,9 @@ export default class DeviceOsUpdateCmd extends Command {
 		// Get target OS version
 		let targetOsVersion = options.version;
 		if (targetOsVersion != null) {
-			const { normalizeOsVersion } = await import('../../utils/normalization');
+			const { normalizeOsVersion } = await import(
+				'../../utils/normalization.js'
+			);
 			targetOsVersion = normalizeOsVersion(targetOsVersion);
 			if (!hupVersionInfo.versions.includes(targetOsVersion)) {
 				throw new ExpectedError(
@@ -143,7 +145,7 @@ export default class DeviceOsUpdateCmd extends Command {
 			});
 		}
 
-		const patterns = await import('../../utils/patterns');
+		const patterns = await import('../../utils/patterns.js');
 		// Confirm and start update
 		await patterns.confirm(
 			options.yes || false,

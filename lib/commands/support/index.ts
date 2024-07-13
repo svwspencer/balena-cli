@@ -116,7 +116,7 @@ export default class SupportCmd extends Command {
 			ux.action.stop();
 		}
 
-		const { getFleetSlug } = await import('../../utils/sdk');
+		const { getFleetSlug } = await import('../../utils/sdk.js');
 
 		// Process applications
 		for (const appName of appNames) {

@@ -18,12 +18,12 @@ export async function applicationCreateBase(
 ) {
 	// Ascertain device type
 	const deviceType =
-		options.type || (await (await import('./patterns')).selectDeviceType());
+		options.type || (await (await import('./patterns.js')).selectDeviceType());
 
 	// Ascertain organization
 	const organization =
 		options.organization?.toLowerCase() ||
-		(await (await import('./patterns')).getAndSelectOrganization());
+		(await (await import('./patterns.js')).getAndSelectOrganization());
 
 	// Create application
 	try {

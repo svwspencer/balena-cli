@@ -42,7 +42,7 @@ import { LoginServer } from './server';
  *   console.log("My session token is: #{sessionToken}")
  */
 export async function login({ host = '127.0.0.1', port = 0 }) {
-	const utils = await import('./utils');
+	const utils = await import('./utils.js');
 
 	const loginServer = new LoginServer();
 	const {
@@ -55,7 +55,7 @@ export async function login({ host = '127.0.0.1', port = 0 }) {
 	const loginUrl = await utils.getDashboardLoginURL(callbackUrl);
 
 	console.info(`Opening web browser for URL:\n${loginUrl}`);
-	const open = await import('open');
+	const { default: open } = await import('open');
 	await open(loginUrl, { wait: false });
 
 	const balena = getBalenaSdk();

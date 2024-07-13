@@ -18,15 +18,15 @@
 import type { JsonVersions } from '../lib/commands/version/index';
 
 import { run as oclifRun } from '@oclif/core';
-import * as archiver from 'archiver';
-import * as Bluebird from 'bluebird';
+import archiver from 'archiver';
+import Bluebird from 'bluebird';
 import { exec, execFile } from 'child_process';
 import * as filehound from 'filehound';
 import type { Stats } from 'fs';
 import * as fs from 'fs-extra';
-import * as klaw from 'klaw';
+import klaw from 'klaw';
 import * as path from 'path';
-import * as rimraf from 'rimraf';
+import rimraf from 'rimraf';
 import * as semver from 'semver';
 import { promisify } from 'util';
 import { notarize } from '@electron/notarize';
@@ -87,7 +87,7 @@ export const finalReleaseAssets: { [platform: string]: string[] } = {
  * Throw an error if the diff is not empty.
  */
 async function diffPkgOutput(pkgOut: string) {
-	const { monochrome } = await import('../tests/helpers');
+	const { monochrome } = await import('../tests/helpers.js');
 	const relSavedPath = path.join(
 		'tests',
 		'test-data',
@@ -263,7 +263,7 @@ async function testPkg() {
 		'version',
 		'-j',
 	]);
-	const { filterCliOutputForTests } = await import('../tests/helpers');
+	const { filterCliOutputForTests } = await import('../tests/helpers.js');
 	const filtered = filterCliOutputForTests({
 		err: stderr.split(/\r?\n/),
 		out: stdout.split(/\r?\n/),

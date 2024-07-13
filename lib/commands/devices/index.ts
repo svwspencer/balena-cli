@@ -78,7 +78,7 @@ export default class DevicesCmd extends Command {
 		const devices = (
 			await (async () => {
 				if (options.fleet != null) {
-					const { getApplication } = await import('../../utils/sdk');
+					const { getApplication } = await import('../../utils/sdk.js');
 					const application = await getApplication(balena, options.fleet, {
 						$select: 'slug',
 						$expand: {
@@ -115,7 +115,7 @@ export default class DevicesCmd extends Command {
 		];
 
 		if (options.json) {
-			const { pickAndRename } = await import('../../utils/helpers');
+			const { pickAndRename } = await import('../../utils/helpers.js');
 			const mapped = devices.map((device) => pickAndRename(device, fields));
 			console.log(JSON.stringify(mapped, null, 4));
 		} else {

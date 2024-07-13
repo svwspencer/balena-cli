@@ -77,7 +77,7 @@ export default class AppCreateCmd extends Command {
 		const { args: params, flags: options } = await this.parse(AppCreateCmd);
 
 		await (
-			await import('../../utils/application-create')
+			await import('../../utils/application-create.js')
 		).applicationCreateBase('app', options, params);
 	}
 }

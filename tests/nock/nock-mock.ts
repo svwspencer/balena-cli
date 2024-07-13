@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import * as nock from 'nock';
+import nock from 'nock';
 import * as fs from 'fs';
 
 export interface ScopeOpts {

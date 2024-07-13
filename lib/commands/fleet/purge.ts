@@ -51,7 +51,7 @@ export default class FleetPurgeCmd extends Command {
 	public async run() {
 		const { args: params } = await this.parse(FleetPurgeCmd);
 
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		const balena = getBalenaSdk();
 

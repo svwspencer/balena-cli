@@ -101,7 +101,7 @@ export default class DeviceMoveCmd extends Command {
 		const devices = await this.getDevices(balena, deviceUuids);
 
 		// Disambiguate application
-		const { getApplication } = await import('../../utils/sdk');
+		const { getApplication } = await import('../../utils/sdk.js');
 
 		// Get destination application
 		const application = options.fleet
@@ -151,7 +151,7 @@ export default class DeviceMoveCmd extends Command {
 			})
 			.map((deviceType) => deviceType.id);
 
-		const patterns = await import('../../utils/patterns');
+		const patterns = await import('../../utils/patterns.js');
 		try {
 			const application = await patterns.selectApplication(
 				{

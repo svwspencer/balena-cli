@@ -90,8 +90,8 @@ export function filterCliOutputForTests({
  * @param cmd Command to execute, e.g. `push myApp` (without 'balena' prefix)
  */
 async function runCommandInProcess(cmd: string): Promise<TestOutput> {
-	const balenaCLI = await import('../build/app');
-	const intercept = await import('intercept-stdout');
+	const balenaCLI = await import('../build/app.js');
+	const { default: intercept } = await import('intercept-stdout');
 
 	const preArgs = [process.argv[0], path.join(process.cwd(), 'bin', 'balena')];
 
@@ -236,7 +236,7 @@ export async function runCommand(cmd: string): Promise<TestOutput> {
 		} catch {
 			throw new Error(`Standalone executable not found: "${standalonePath}"`);
 		}
-		const proxy = await import('./nock/proxy-server');
+		const proxy = await import('./nock/proxy-server.js');
 		const [proxyPort] = await proxy.createProxyServerOnce();
 		return runCommandInSubprocess(cmd, proxyPort);
 	} else {
@@ -353,7 +353,7 @@ export function deepJsonParse(data: any): any {
 export async function switchSentry(
 	enabled: boolean | undefined,
 ): Promise<boolean | undefined> {
-	const balenaCLI = await import('../build/app');
+	const balenaCLI = await import('../build/app.js');
 	const sentryOpts = (await balenaCLI.setupSentry()).getClient()?.getOptions();
 	if (sentryOpts) {
 		const sentryStatus = sentryOpts.enabled;

@@ -77,7 +77,7 @@ export async function sudo(
 		isCLIcmd,
 	}: { stderr?: NodeJS.WritableStream; msg?: string; isCLIcmd?: boolean } = {},
 ) {
-	const { executeWithPrivileges } = await import('./sudo');
+	const { executeWithPrivileges } = await import('./sudo.js');
 
 	if (process.platform !== 'win32') {
 		console.log(
@@ -115,7 +115,7 @@ export async function getManifest(
 		manifest.slug !== deviceType &&
 		manifest.slug !== (await sdk.models.deviceType.get(deviceType)).slug
 	) {
-		const { ExpectedError } = await import('../errors');
+		const { ExpectedError } = await import('../errors.js');
 		throw new ExpectedError(
 			`The device type of the provided OS image ${manifest.slug}, does not match the expected device type ${deviceType}`,
 		);
@@ -182,7 +182,7 @@ export async function osProgressHandler(step: InitializeEmitter) {
 }
 
 export async function getAppWithArch(applicationName: string) {
-	const { getApplication } = await import('./sdk');
+	const { getApplication } = await import('./sdk.js');
 	const balena = getBalenaSdk();
 	const app = await getApplication(balena, applicationName, {
 		$expand: {
@@ -239,7 +239,7 @@ export async function retry<T>({
 	backoffScaler?: number;
 	maxSingleDelayMs?: number;
 }): Promise<T> {
-	const { SIGINTError } = await import('../errors');
+	const { SIGINTError } = await import('../errors.js');
 	let delayMs = initialDelayMs;
 	for (let count = 0; count < maxAttempts - 1; count++) {
 		const lastAttemptMs = Date.now();

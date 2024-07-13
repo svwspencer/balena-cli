@@ -79,7 +79,7 @@ export default class LocalFlashCmd extends Command {
 
 		const drive = await this.getDrive(options);
 
-		const { confirm } = await import('../../utils/patterns');
+		const { confirm } = await import('../../utils/patterns.js');
 		await confirm(
 			options.yes,
 			'This will erase the selected drive. Are you sure?',
