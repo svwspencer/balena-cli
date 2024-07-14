@@ -64,27 +64,27 @@ process.on('SIGINT', function () {
 });
 
 // Modify package.json oclif paths from build/ -> lib/, or vice versa
-// function modifyOclifPaths(revert) {
-// 	const packageJsonPath = path.join(rootDir, 'package.json');
+function modifyOclifPaths(revert) {
+	const packageJsonPath = path.join(rootDir, 'package.json');
 
-// 	const packageJson = fs.readFileSync(packageJsonPath, 'utf8');
-// 	const packageObj = JSON.parse(packageJson);
+	const packageJson = fs.readFileSync(packageJsonPath, 'utf8');
+	const packageObj = JSON.parse(packageJson);
 
-// 	if (!packageObj.oclif) {
-// 		return;
-// 	}
+	if (!packageObj.oclif) {
+		return;
+	}
 
-// 	let oclifSectionText = JSON.stringify(packageObj.oclif);
-// 	if (!revert) {
-// 		oclifSectionText = oclifSectionText.replace(/\/build\//g, '/lib/');
-// 	} else {
-// 		oclifSectionText = oclifSectionText.replace(/\/lib\//g, '/build/');
-// 	}
+	let oclifSectionText = JSON.stringify(packageObj.oclif);
+	if (!revert) {
+		oclifSectionText = oclifSectionText.replace(/\/build\/lib\//g, '/lib/');
+	} else {
+		oclifSectionText = oclifSectionText.replace(/\/lib\//g, '/build/lib/');
+	}
 
-// 	packageObj.oclif = JSON.parse(oclifSectionText);
-// 	fs.writeFileSync(
-// 		packageJsonPath,
-// 		`${JSON.stringify(packageObj, null, 2)}\n`,
-// 		'utf8',
-// 	);
-// }
+	packageObj.oclif = JSON.parse(oclifSectionText);
+	fs.writeFileSync(
+		packageJsonPath,
+		`${JSON.stringify(packageObj, null, 2)}\n`,
+		'utf8',
+	);
+}

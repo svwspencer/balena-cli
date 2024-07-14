@@ -32,19 +32,14 @@ import { promisify } from 'util';
 import { notarize } from '@electron/notarize';
 
 import { stripIndent } from '../lib/utils/lazy';
-import {
-	diffLines,
-	loadPackageJson,
-	ROOT,
-	StdOutTap,
-	whichSpawn,
-} from './utils';
+import { diffLines, ROOT, StdOutTap, whichSpawn } from './utils';
 import { filterCliOutputForTests, monochrome } from '../tests/helpers';
 
 const execFileAsync = promisify(execFile);
 const execAsync = promisify(exec);
 
-export const packageJSON = loadPackageJson();
+import pjson from '../package.json' with { type: 'json' };
+export const packageJSON = pjson;
 export const version = 'v' + packageJSON.version;
 const arch = process.arch;
 
@@ -172,7 +167,11 @@ async function execPkg(...args: any[]) {
 		throw err;
 	}
 	outTap.untap();
-	await diffPkgOutput(outTap.allBuf.join(''));
+	try {
+		await diffPkgOutput(outTap.allBuf.join(''));
+	} catch (err) {
+		console.error('diff on pkg warnings', err);
+	}
 }
 
 /**

@@ -147,7 +147,9 @@ See: https://git.io/JRHUW#deprecation-policy`,
 		];
 		globalOps[0][0] = globalOps[0][0].padEnd(usageLength);
 
-		const { deprecationPolicyNote, reachingOut } = await import('./utils/messages.js');
+		const { deprecationPolicyNote, reachingOut } = await import(
+			'./utils/messages.js'
+		);
 
 		return [
 			bold('USAGE'),

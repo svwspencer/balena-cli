@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 import { Parser } from '@oclif/core';
-import * as ent from 'ent';
+import ent from 'ent';
 import _ from 'lodash';
 
 import { getManualSortCompareFunction } from '../../lib/utils/helpers';

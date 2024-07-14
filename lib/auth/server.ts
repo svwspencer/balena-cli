@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import * as bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import { EventEmitter } from 'events';
 import express from 'express';
 import type { Socket } from 'net';

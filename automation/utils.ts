@@ -83,10 +83,6 @@ export function diffLines(str1: string, str2: string): string {
 	return diffStr;
 }
 
-export function loadPackageJson() {
-	return require(path.join(ROOT, 'package.json'));
-}
-
 /**
  * Error handling wrapper around the npm `which` package:
  * "Like the unix which utility. Finds the first instance of a specified
