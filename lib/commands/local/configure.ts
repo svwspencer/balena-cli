@@ -17,9 +17,9 @@
 
 import { Args } from '@oclif/core';
 import { promisify } from 'util';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { stripIndent } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { stripIndent } from '../../utils/lazy.js';
 
 export default class LocalConfigureCmd extends Command {
 	public static description = stripIndent`

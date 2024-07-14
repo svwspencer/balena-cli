@@ -16,10 +16,10 @@
  */
 
 import { Args, Flags } from '@oclif/core';
-import Command from '../../command';
-import { getBalenaSdk } from '../../utils/lazy';
-import * as cf from '../../utils/common-flags';
-import * as compose from '../../utils/compose';
+import Command from '../../command.js';
+import { getBalenaSdk } from '../../utils/lazy.js';
+import * as cf from '../../utils/common-flags.js';
+import * as compose from '../../utils/compose.js';
 import type {
 	ApplicationType,
 	BalenaSDK,
@@ -31,11 +31,14 @@ import {
 	buildArgDeprecation,
 	dockerignoreHelp,
 	registrySecretsHelp,
-} from '../../utils/messages';
-import type { ComposeCliFlags, ComposeOpts } from '../../utils/compose-types';
-import { buildProject, composeCliFlags } from '../../utils/compose_ts';
-import type { BuildOpts, DockerCliFlags } from '../../utils/docker';
-import { dockerCliFlags } from '../../utils/docker';
+} from '../../utils/messages.js';
+import type {
+	ComposeCliFlags,
+	ComposeOpts,
+} from '../../utils/compose-types.js';
+import { buildProject, composeCliFlags } from '../../utils/compose_ts.js';
+import type { BuildOpts, DockerCliFlags } from '../../utils/docker.js';
+import { dockerCliFlags } from '../../utils/docker.js';
 import type Dockerode from 'dockerode';
 
 // TODO: For this special one we can't use Interfaces.InferredFlags/InferredArgs
@@ -260,7 +263,7 @@ ${dockerignoreHelp}
 	 */
 	protected async buildProject(
 		docker: import('dockerode'),
-		logger: import('../../utils/logger'),
+		logger: import('../../utils/logger.js').default,
 		composeOpts: ComposeOpts,
 		opts: {
 			appType?: Pick<ApplicationType, 'supports_multicontainer'>;

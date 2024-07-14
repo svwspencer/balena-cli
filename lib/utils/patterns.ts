@@ -24,10 +24,10 @@ import type {
 	PineTypedResult,
 } from 'balena-sdk';
 
-import { instanceOf, NotLoggedInError, ExpectedError } from '../errors';
-import { getBalenaSdk, getVisuals, stripIndent, getCliForm } from './lazy';
-import validation = require('./validation');
-import { delay } from './helpers';
+import { instanceOf, NotLoggedInError, ExpectedError } from '../errors.js';
+import { getBalenaSdk, getVisuals, stripIndent, getCliForm } from './lazy.js';
+import * as validation from './validation.js';
+import { delay } from './helpers.js';
 import type Bluebird from 'bluebird';
 
 export function authenticate(options: object): Bluebird<void> {
@@ -305,8 +305,8 @@ export async function getOnlineTargetDeviceUuid(
 	sdk: BalenaSDK,
 	fleetOrDevice: string,
 ) {
-	const { default: Logger } = await import('../utils/logger.js');
-	const logger = Logger.getLogger();
+	const Logger = await import('../utils/logger.js');
+	const logger = Logger.default.getLogger();
 
 	// If looks like UUID, probably device
 	if (validation.validateUuid(fleetOrDevice)) {

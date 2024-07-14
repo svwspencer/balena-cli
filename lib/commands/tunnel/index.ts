@@ -16,15 +16,15 @@
  */
 
 import { Flags, Args } from '@oclif/core';
-import Command from '../../command';
+import Command from '../../command.js';
 import {
 	NoPortsDefinedError,
 	InvalidPortMappingError,
 	ExpectedError,
-} from '../../errors';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { lowercaseIfSlug } from '../../utils/normalization';
+} from '../../errors.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { lowercaseIfSlug } from '../../utils/normalization.js';
 
 import type { Server, Socket } from 'net';
 

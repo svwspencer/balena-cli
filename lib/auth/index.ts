@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { getBalenaSdk } from '../utils/lazy';
-import { LoginServer } from './server';
+import { getBalenaSdk } from '../utils/lazy.js';
+import { LoginServer } from './server.js';
 
 /**
  * @module auth

@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 import ColorHash = require('color-hash');
-import * as _ from 'lodash';
+import _ from 'lodash';
 import type { Readable } from 'stream';
 
-import { getChalk } from '../lazy';
-import Logger = require('../logger');
-import { ExpectedError, SIGINTError } from '../../errors';
+import { getChalk } from '../lazy.js';
+import type Logger from '../logger.js';
+import { ExpectedError, SIGINTError } from '../../errors.js';
 
 class DeviceConnectionLostError extends ExpectedError {
 	public static defaultMsg = 'Connection to device lost';
@@ -113,7 +113,7 @@ export async function connectAndDisplayDeviceLogs({
 	filterServices,
 	maxAttempts = 3,
 }: {
-	deviceApi: import('./api').DeviceAPI;
+	deviceApi: import('./api.js').DeviceAPI;
 	logger: Logger;
 	system: boolean;
 	filterServices?: string[];

@@ -19,6 +19,8 @@ import { getCapitanoDoc } from './capitanodoc';
 import type { Category, Document, OclifCommand } from './doc-types';
 import * as markdown from './markdown';
 import { stripIndent } from '../../lib/utils/lazy';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 /**
  * Generates the markdown document (as a string) for the CLI documentation

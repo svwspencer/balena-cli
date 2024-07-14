@@ -16,9 +16,9 @@
  */
 
 import { Flags } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getVisuals, stripIndent } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getVisuals, stripIndent } from '../../utils/lazy.js';
 
 export default class ConfigReconfigureCmd extends Command {
 	public static description = stripIndent`

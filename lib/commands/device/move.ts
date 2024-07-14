@@ -22,11 +22,11 @@ import type {
 	PineOptions,
 	PineTypedResult,
 } from 'balena-sdk';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { ExpectedError } from '../../errors';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { applicationIdInfo } from '../../utils/messages';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { ExpectedError } from '../../errors.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { applicationIdInfo } from '../../utils/messages.js';
 
 export default class DeviceMoveCmd extends Command {
 	public static description = stripIndent`

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { expandForAppName } from '../../utils/helpers';
-import { getBalenaSdk, getVisuals, stripIndent } from '../../utils/lazy';
-import { applicationIdInfo, jsonInfo } from '../../utils/messages';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { expandForAppName } from '../../utils/helpers.js';
+import { getBalenaSdk, getVisuals, stripIndent } from '../../utils/lazy.js';
+import { applicationIdInfo, jsonInfo } from '../../utils/messages.js';
 
 import type { Device, PineOptions } from 'balena-sdk';
 

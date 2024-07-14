@@ -16,11 +16,11 @@
  */
 
 import { Flags } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { applicationIdInfo } from '../../utils/messages';
-import { runCommand } from '../../utils/helpers';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { applicationIdInfo } from '../../utils/messages.js';
+import { runCommand } from '../../utils/helpers.js';
 
 interface FlagsDef {
 	fleet?: string;

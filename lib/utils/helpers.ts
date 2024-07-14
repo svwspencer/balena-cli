@@ -17,10 +17,12 @@ limitations under the License.
 import type { InitializeEmitter, OperationState } from 'balena-device-init';
 import type * as BalenaSdk from 'balena-sdk';
 
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { promisify } from 'util';
 
-import { getBalenaSdk, getChalk, getVisuals } from './lazy';
+import { getBalenaSdk, getChalk, getVisuals } from './lazy.js';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 export function getGroupDefaults(group: {
 	options: Array<{ name: string; default: string | number }>;
@@ -90,8 +92,7 @@ export async function sudo(
 }
 
 export async function runCommand<T>(commandArgs: string[]): Promise<T> {
-	const { isSubcommand } =
-		require('../preparser') as typeof import('../preparser');
+	const { isSubcommand } = await import('../preparser.js');
 	if (await isSubcommand(commandArgs)) {
 		commandArgs = [
 			commandArgs[0] + ':' + commandArgs[1],
@@ -99,7 +100,7 @@ export async function runCommand<T>(commandArgs: string[]): Promise<T> {
 		];
 	}
 
-	const { run } = require('@oclif/core') as typeof import('@oclif/core');
+	const { run } = await import('@oclif/core');
 	return run(commandArgs) as Promise<T>;
 }
 
@@ -486,7 +487,7 @@ export async function awaitInterruptibleTask<
 	const sigintPromise = new Promise<T>((_resolve, reject) => {
 		sigintHandler = () => {
 			const { SIGINTError } =
-				require('../errors') as typeof import('../errors');
+				require('../errors.js') as typeof import('../errors.js');
 			reject(new SIGINTError('Task aborted on SIGINT signal'));
 		};
 		addSIGINTHandler(sigintHandler);

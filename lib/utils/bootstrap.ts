@@ -21,6 +21,8 @@
  * can be used very early on during CLI startup, before anything else
  * like Sentry error reporting, preparser, oclif parser and the like.
  */
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 export class CliSettings {
 	public readonly settings: any;

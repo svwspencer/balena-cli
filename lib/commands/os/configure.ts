@@ -19,16 +19,16 @@ import { Flags, Args } from '@oclif/core';
 import type { Interfaces } from '@oclif/core';
 import type * as BalenaSdk from 'balena-sdk';
 import { promisify } from 'util';
-import * as _ from 'lodash';
-import Command from '../../command';
-import { ExpectedError } from '../../errors';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent, getCliForm } from '../../utils/lazy';
+import _ from 'lodash';
+import Command from '../../command.js';
+import { ExpectedError } from '../../errors.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent, getCliForm } from '../../utils/lazy.js';
 import {
 	applicationIdInfo,
 	devModeInfo,
 	secureBootInfo,
-} from '../../utils/messages';
+} from '../../utils/messages.js';
 
 const CONNECTIONS_FOLDER = '/system-connections';
 
@@ -205,7 +205,7 @@ export default class OsConfigureCmd extends Command {
 			deviceTypeSlug,
 		);
 
-		let configJson: import('../../utils/config').ImgConfig | undefined;
+		let configJson: import('../../utils/config.js').ImgConfig | undefined;
 		if (options.config) {
 			const rawConfig = await fs.readFile(options.config, 'utf8');
 			configJson = JSON.parse(rawConfig);
@@ -394,7 +394,7 @@ async function checkDeviceTypeCompatibility(
 async function askQuestionsForDeviceType(
 	deviceType: BalenaSdk.DeviceTypeJson.DeviceType,
 	options: FlagsDef,
-	configJson?: import('../../utils/config').ImgConfig,
+	configJson?: import('../../utils/config.js').ImgConfig,
 ): Promise<Answers> {
 	const answerSources: any[] = [
 		{

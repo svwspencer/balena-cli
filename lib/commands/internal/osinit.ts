@@ -16,9 +16,9 @@
  */
 
 import { Args } from '@oclif/core';
-import Command from '../../command';
-import { stripIndent } from '../../utils/lazy';
-import { CommandHelp } from '../../utils/oclif-utils';
+import Command from '../../command.js';
+import { stripIndent } from '../../utils/lazy.js';
+import { CommandHelp } from '../../utils/oclif-utils.js';
 
 // 'Internal' commands are called during the execution of other commands.
 // `osinit` is called during `os initialize`

@@ -2,12 +2,13 @@
   "name": "balena-cli",
   "version": "18.2.31",
   "description": "The official balena Command Line Interface",
-  "main": "./build/app.js",
+  "main": "./build/lib/app.js",
   "homepage": "https://github.com/balena-io/balena-cli",
   "repository": {
     "type": "git",
     "url": "git@github.com:balena-io/balena-cli.git"
   },
+  "type": "module",
   "preferGlobal": true,
   "files": [
     "bin/.fast-boot.json",
@@ -32,7 +33,7 @@
       "node_modules/@balena/compose/dist/parse/schemas/*.json"
     ],
     "assets": [
-      "build/auth/pages/*.ejs",
+      "build/lib/auth/pages/*.ejs",
       "node_modules/balena-sdk/node_modules/balena-pine/**/*",
       "node_modules/balena-pine/**/*",
       "node_modules/pinejs-client-core/**/*",
@@ -91,7 +92,7 @@
   "author": "Balena Inc. (https://balena.io/)",
   "license": "Apache-2.0",
   "engines": {
-    "node": "^20.6.0"
+    "node": "^20.11.0"
   },
   "husky": {
     "hooks": {
@@ -100,12 +101,12 @@
   },
   "oclif": {
     "bin": "balena",
-    "commands": "./build/commands",
-    "helpClass": "./build/help",
+    "commands": "./build/lib/commands",
+    "helpClass": "./build/lib/help",
     "topicSeparator": " ",
     "hooks": {
-      "prerun": "./build/hooks/prerun/track",
-      "command_not_found": "./build/hooks/command-not-found/suggest"
+      "prerun": "./build/lib/hooks/prerun/track",
+      "command_not_found": "./build/lib/hooks/command-not-found/suggest"
     },
     "additionalHelpFlags": [
       "help"

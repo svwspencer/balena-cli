@@ -16,11 +16,11 @@
  */
 import type * as BalenaSdk from 'balena-sdk';
 
-import { ExpectedError, printErrorMessage } from '../errors';
-import { getVisuals, stripIndent, getCliForm } from './lazy';
-import Logger = require('./logger');
-import { confirm } from './patterns';
-import { getLocalDeviceCmdStdout, getDeviceOsRelease } from './ssh';
+import { ExpectedError, printErrorMessage } from '../errors.js';
+import { getVisuals, stripIndent, getCliForm } from './lazy.js';
+import type Logger from './logger.js';
+import { confirm } from './patterns.js';
+import { getLocalDeviceCmdStdout, getDeviceOsRelease } from './ssh.js';
 
 const MIN_BALENAOS_VERSION = 'v2.14.0';
 

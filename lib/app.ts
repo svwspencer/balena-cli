@@ -15,16 +15,19 @@
  * limitations under the License.
  */
 
-import * as packageJSON from '../package.json';
-import type { AppOptions } from './preparser';
+import packageJSON from '../package.json' with { type: 'json' };
+import type { AppOptions } from './preparser.js';
 import {
 	checkDeletedCommand,
 	preparseArgs,
 	unsupportedFlag,
-} from './preparser';
-import { CliSettings } from './utils/bootstrap';
-import { onceAsync } from './utils/lazy';
+} from './preparser.js';
+import { CliSettings } from './utils/bootstrap.js';
+import { onceAsync } from './utils/lazy.js';
 import { run as mainRun, settings } from '@oclif/core';
+
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 /**
  * Sentry.io setup
@@ -164,6 +167,7 @@ export async function run(cliArgs = process.argv, options: AppOptions) {
 		const { setOfflineModeEnvVars, normalizeEnvVars, pkgExec } = await import(
 			'./utils/bootstrap.js'
 		);
+
 		setOfflineModeEnvVars();
 		normalizeEnvVars();
 
@@ -176,7 +180,7 @@ export async function run(cliArgs = process.argv, options: AppOptions) {
 		await init();
 
 		// Look for commands that have been removed and if so, exit with a notice
-		checkDeletedCommand(cliArgs.slice(2));
+		await checkDeletedCommand(cliArgs.slice(2));
 
 		const args = await preparseArgs(cliArgs);
 		await oclifRun(args, options);

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-import * as packageJSON from '../package.json';
-import { stripIndent } from './utils/lazy';
+import packageJSON from '../package.json' with { type: 'json' };
+import { stripIndent } from './utils/lazy.js';
 
 /**
  * Track balena CLI usage events (product improvement analytics).

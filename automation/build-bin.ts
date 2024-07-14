@@ -21,7 +21,7 @@ import { run as oclifRun } from '@oclif/core';
 import archiver from 'archiver';
 import Bluebird from 'bluebird';
 import { exec, execFile } from 'child_process';
-import * as filehound from 'filehound';
+import filehound from 'filehound';
 import type { Stats } from 'fs';
 import * as fs from 'fs-extra';
 import klaw from 'klaw';
@@ -31,7 +31,7 @@ import * as semver from 'semver';
 import { promisify } from 'util';
 import { notarize } from '@electron/notarize';
 
-import { stripIndent } from '../build/utils/lazy';
+import { stripIndent } from '../lib/utils/lazy';
 import {
 	diffLines,
 	loadPackageJson,
@@ -39,6 +39,7 @@ import {
 	StdOutTap,
 	whichSpawn,
 } from './utils';
+import { filterCliOutputForTests, monochrome } from '../tests/helpers';
 
 const execFileAsync = promisify(execFile);
 const execAsync = promisify(exec);
@@ -87,7 +88,6 @@ export const finalReleaseAssets: { [platform: string]: string[] } = {
  * Throw an error if the diff is not empty.
  */
 async function diffPkgOutput(pkgOut: string) {
-	const { monochrome } = await import('../tests/helpers.js');
 	const relSavedPath = path.join(
 		'tests',
 		'test-data',
@@ -263,7 +263,6 @@ async function testPkg() {
 		'version',
 		'-j',
 	]);
-	const { filterCliOutputForTests } = await import('../tests/helpers.js');
 	const filtered = filterCliOutputForTests({
 		err: stderr.split(/\r?\n/),
 		out: stdout.split(/\r?\n/),
@@ -570,6 +569,8 @@ export async function testShrinkwrap(): Promise<void> {
 		console.error(`[debug] platform=${process.platform}`);
 	}
 	if (process.platform !== 'win32') {
-		await whichSpawn(path.resolve(__dirname, 'test-lock-deduplicated.sh'));
+		await whichSpawn(
+			path.resolve(import.meta.dirname, 'test-lock-deduplicated.sh'),
+		);
 	}
 }

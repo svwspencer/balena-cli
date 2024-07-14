@@ -16,9 +16,9 @@
  */
 
 import { Args } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getCliForm, stripIndent } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getCliForm, stripIndent } from '../../utils/lazy.js';
 
 const INIT_WARNING_MESSAGE = `
 

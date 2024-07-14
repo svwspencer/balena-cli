@@ -15,7 +15,7 @@ limitations under the License.
 */
 import type * as BalenaSdk from 'balena-sdk';
 import * as semver from 'balena-semver';
-import { getBalenaSdk, stripIndent } from './lazy';
+import { getBalenaSdk, stripIndent } from './lazy.js';
 
 export interface ImgConfig {
 	applicationName: string;
@@ -155,7 +155,7 @@ export function generateDeviceConfig(
 export async function validateDevOptionAndWarn(
 	dev?: boolean,
 	version?: string,
-	logger?: import('./logger'),
+	logger?: import('./logger.js').default,
 ) {
 	if (!dev) {
 		return;
@@ -187,7 +187,7 @@ export async function validateSecureBootOptionAndWarn(
 	secureBoot: boolean,
 	slug: string,
 	version: string,
-	logger?: import('./logger'),
+	logger?: import('./logger.js').default,
 ) {
 	if (!secureBoot) {
 		return;

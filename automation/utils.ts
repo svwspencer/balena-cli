@@ -17,8 +17,9 @@
 
 import { spawn } from 'child_process';
 import * as path from 'path';
+import { diffTrimmedLines } from 'diff';
 
-export const ROOT = path.join(__dirname, '..');
+export const ROOT = path.join(import.meta.dirname, '..');
 
 /** Tap and buffer this process' stdout and stderr */
 export class StdOutTap {
@@ -64,7 +65,6 @@ export class StdOutTap {
  * https://www.npmjs.com/package/diff
  */
 export function diffLines(str1: string, str2: string): string {
-	const { diffTrimmedLines } = require('diff');
 	const diffObjs = diffTrimmedLines(str1, str2);
 	const prefix = (chunk: string, char: string) =>
 		chunk

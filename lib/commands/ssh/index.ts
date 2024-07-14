@@ -16,13 +16,13 @@
  */
 
 import { Flags, Args } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
 import {
 	parseAsInteger,
 	validateLocalHostnameOrIp,
-} from '../../utils/validation';
+} from '../../utils/validation.js';
 
 export default class SshCmd extends Command {
 	public static description = stripIndent`

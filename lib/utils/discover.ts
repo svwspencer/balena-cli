@@ -1,4 +1,4 @@
-import Bonjour from 'bonjour-service';
+import { Bonjour } from 'bonjour-service';
 import type { Service } from 'bonjour-service';
 
 interface LocalBalenaOsDevice {

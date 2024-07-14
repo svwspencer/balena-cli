@@ -16,10 +16,10 @@
  */
 
 import { Args } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { stripIndent } from '../../utils/lazy';
-import { parseAsLocalHostnameOrIp } from '../../utils/validation';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { stripIndent } from '../../utils/lazy.js';
+import { parseAsLocalHostnameOrIp } from '../../utils/validation.js';
 
 export default class LeaveCmd extends Command {
 	public static description = stripIndent`

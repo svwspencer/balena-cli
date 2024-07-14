@@ -19,9 +19,9 @@ import { Command } from '@oclif/core';
 import {
 	InsufficientPrivilegesError,
 	NotAvailableInOfflineModeError,
-} from './errors';
-import { stripIndent } from './utils/lazy';
-import * as output from './framework/output';
+} from './errors.js';
+import { stripIndent } from './utils/lazy.js';
+import * as output from './framework/output.js';
 
 export default abstract class BalenaCommand extends Command {
 	/**
@@ -147,8 +147,8 @@ export default abstract class BalenaCommand extends Command {
 	 * Get a logger instance.
 	 */
 	protected static async getLogger() {
-		const { default: logger } = await import('./utils/logger.js');
-		return logger.getLogger();
+		const { default: Logger } = await import('./utils/logger.js');
+		return Logger.getLogger();
 	}
 
 	protected async init() {

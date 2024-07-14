@@ -17,18 +17,18 @@
 
 import { Flags, Args } from '@oclif/core';
 import type { Interfaces } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { dockerignoreHelp, registrySecretsHelp } from '../../utils/messages';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { dockerignoreHelp, registrySecretsHelp } from '../../utils/messages.js';
 import type { BalenaSDK } from 'balena-sdk';
-import { ExpectedError, instanceOf } from '../../errors';
+import { ExpectedError, instanceOf } from '../../errors.js';
 import type { RegistrySecrets } from '@balena/compose/dist/multibuild';
-import { lowercaseIfSlug } from '../../utils/normalization';
+import { lowercaseIfSlug } from '../../utils/normalization.js';
 import {
 	applyReleaseTagKeysAndValues,
 	parseReleaseTagKeysAndValues,
-} from '../../utils/compose_ts';
+} from '../../utils/compose_ts.js';
 
 enum BuildTarget {
 	Cloud,

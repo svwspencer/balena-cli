@@ -16,11 +16,11 @@
  */
 
 import { Flags, Args } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, stripIndent, getCliForm } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, stripIndent, getCliForm } from '../../utils/lazy.js';
 import type { Device } from 'balena-sdk';
-import { ExpectedError } from '../../errors';
+import { ExpectedError } from '../../errors.js';
 
 export default class DeviceOsUpdateCmd extends Command {
 	public static description = stripIndent`

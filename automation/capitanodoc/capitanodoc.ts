@@ -144,7 +144,7 @@ capitanoDoc.categories.forEach((category) => {
  * for the documentation web page.
  */
 export async function getCapitanoDoc(): Promise<typeof capitanoDoc> {
-	const readmePath = path.join(__dirname, '..', '..', 'README.md');
+	const readmePath = path.join(import.meta.dirname, '..', '..', 'README.md');
 	const mdParser = new MarkdownFileParser(readmePath);
 	const sections: string[] = await Promise.all([
 		mdParser.getSectionOfTitle('About').then((sectionLines: string) => {

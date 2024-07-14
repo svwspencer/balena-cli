@@ -17,7 +17,7 @@
 
 import type { ChildProcess, SpawnOptions } from 'child_process';
 import { spawn } from 'child_process';
-import { stripIndent } from './lazy';
+import { stripIndent } from './lazy.js';
 
 /**
  * Execute a child process with admin / superuser privileges, prompting the user for
@@ -116,5 +116,10 @@ async function windosuExec(
 		`;
 		throw new Error(msg);
 	}
+
+	const {
+		default: { createRequire },
+	} = await import('node:module');
+	const require = createRequire(import.meta.url);
 	return require('windosu').exec(escapedArgs.join(' '));
 }

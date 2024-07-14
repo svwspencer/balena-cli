@@ -15,21 +15,21 @@
  * limitations under the License.
  */
 
-import Command from '../../command';
-import { ExpectedError } from '../../errors';
-import * as cf from '../../utils/common-flags';
+import Command from '../../command.js';
+import { ExpectedError } from '../../errors.js';
+import * as cf from '../../utils/common-flags.js';
 import {
 	getBalenaSdk,
 	getCliForm,
 	getVisuals,
 	stripIndent,
-} from '../../utils/lazy';
-import { applicationIdInfo } from '../../utils/messages';
-import { dockerConnectionCliFlags } from '../../utils/docker';
-import { parseAsInteger } from '../../utils/validation';
+} from '../../utils/lazy.js';
+import { applicationIdInfo } from '../../utils/messages.js';
+import { dockerConnectionCliFlags } from '../../utils/docker.js';
+import { parseAsInteger } from '../../utils/validation.js';
 
 import { Flags, Args } from '@oclif/core';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import type {
 	Application,
 	BalenaSDK,

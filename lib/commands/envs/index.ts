@@ -17,12 +17,12 @@
 import { Flags } from '@oclif/core';
 import type { Interfaces } from '@oclif/core';
 import type * as SDK from 'balena-sdk';
-import * as _ from 'lodash';
-import Command from '../../command';
-import { ExpectedError } from '../../errors';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, getVisuals, stripIndent } from '../../utils/lazy';
-import { applicationIdInfo } from '../../utils/messages';
+import _ from 'lodash';
+import Command from '../../command.js';
+import { ExpectedError } from '../../errors.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, getVisuals, stripIndent } from '../../utils/lazy.js';
+import { applicationIdInfo } from '../../utils/messages.js';
 
 type FlagsDef = Interfaces.InferredFlags<typeof EnvsCmd.flags>;
 

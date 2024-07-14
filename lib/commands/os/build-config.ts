@@ -16,10 +16,10 @@
  */
 
 import { Flags, Args } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getCliForm, stripIndent } from '../../utils/lazy';
-import * as _ from 'lodash';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getCliForm, stripIndent } from '../../utils/lazy.js';
+import _ from 'lodash';
 import type { DeviceTypeJson } from 'balena-sdk';
 
 export default class OsBuildConfigCmd extends Command {

@@ -17,11 +17,11 @@
 
 import { Flags } from '@oclif/core';
 
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import * as ca from '../../utils/common-args';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { applicationIdInfo } from '../../utils/messages';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import * as ca from '../../utils/common-args.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { applicationIdInfo } from '../../utils/messages.js';
 
 export default class FleetCmd extends Command {
 	public static description = stripIndent`

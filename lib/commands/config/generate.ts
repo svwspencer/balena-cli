@@ -17,14 +17,14 @@
 
 import { Flags } from '@oclif/core';
 import type { Interfaces } from '@oclif/core';
-import Command from '../../command';
-import * as cf from '../../utils/common-flags';
-import { getBalenaSdk, getCliForm, stripIndent } from '../../utils/lazy';
+import Command from '../../command.js';
+import * as cf from '../../utils/common-flags.js';
+import { getBalenaSdk, getCliForm, stripIndent } from '../../utils/lazy.js';
 import {
 	applicationIdInfo,
 	devModeInfo,
 	secureBootInfo,
-} from '../../utils/messages';
+} from '../../utils/messages.js';
 import type { BalenaSDK, PineDeferred } from 'balena-sdk';
 
 export default class ConfigGenerateCmd extends Command {

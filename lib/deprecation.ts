@@ -16,6 +16,8 @@
  */
 
 import type { BalenaSettingsStorage } from 'balena-settings-storage';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 export interface ReleaseTimestampsByVersion {
 	[version: string]: string; // e.g. { '12.0.0': '2021-06-16T12:54:52.000Z' }
@@ -208,7 +210,7 @@ or release date not available`);
 	/** Separate function for the benefit of code testing */
 	getDeprecationMsg(daysElapsed: number) {
 		const { warnify } =
-			require('./utils/messages') as typeof import('./utils/messages');
+			require('./utils/messages') as typeof import('./utils/messages.js');
 		return warnify(`\
 CLI version ${this.nextMajorVersion} was released ${daysElapsed} days ago: please upgrade.
 This version of the balena CLI (${this.currentVersion}) will exit with an error

@@ -16,11 +16,11 @@
  */
 
 import { Flags, Args } from '@oclif/core';
-import Command from '../../command';
+import Command from '../../command.js';
 
-import * as ec from '../../utils/env-common';
-import { getBalenaSdk, stripIndent } from '../../utils/lazy';
-import { parseAsInteger } from '../../utils/validation';
+import * as ec from '../../utils/env-common.js';
+import { getBalenaSdk, stripIndent } from '../../utils/lazy.js';
+import { parseAsInteger } from '../../utils/validation.js';
 
 export default class EnvRmCmd extends Command {
 	public static description = stripIndent`
