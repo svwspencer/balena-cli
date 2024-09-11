@@ -45,7 +45,7 @@ const execAsync = promisify(exec);
 
 export const packageJSON = loadPackageJson();
 export const version = 'v' + packageJSON.version;
-const arch = process.arch;
+const arch = process.arch == "arm" ? "armv7" : process.arch;
 
 function dPath(...paths: string[]) {
 	return path.join(ROOT, 'dist', ...paths);
